@@ -65,7 +65,7 @@ def bot_message(message):
     
     if message.text == search_for_interlocutor_text:
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        item1 = types.KeyboardButton('Axtarışı diyandır')
+        item1 = types.KeyboardButton('Axtarışı dayandır')
         markup.add(item1)
         
         chat_two = db.get_chat(message.chat.id)  # getting interlocutor's id if exists in queue, excluding current user
@@ -81,13 +81,13 @@ def bot_message(message):
             bot.send_message(message.chat.id, 'User tapıldı! Nəsə yaz. Ayrılmaq üçün /stop bas', reply_markup=markup)
             bot.send_message(chat_two, 'User tapıldı! Nəsə yaz. Ayrılmaq üçün /stop bas', reply_markup=markup)
         
-    elif message.text == 'Axtarışı diyandır':
+    elif message.text == 'Axtarışı dayandır':
         # Adding markup
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         item1 = types.KeyboardButton(search_for_interlocutor_text)
         markup.add(item1)
         db.delete_queue(message.chat.id)
-        bot.send_message(message.chat.id, 'Axtarış diyandırıldı', reply_markup=markup)
+        bot.send_message(message.chat.id, 'Axtarış dayandırıldı', reply_markup=markup)
 
     
     else:
