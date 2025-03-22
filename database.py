@@ -90,4 +90,4 @@ class Database():
                 else:
                     return chat_info
     except Exception:
-        print('Error appeared')
+        print('Error ocurred')
